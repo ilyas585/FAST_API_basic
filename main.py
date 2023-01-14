@@ -1,9 +1,10 @@
 import json  # builtin modules
 
 from fastapi import FastAPI, Path, Query, Body  # external modules, i.o. which used pip install
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse, RedirectResponse
 import uvicorn
 
-from models import User, Family  # custom modules, our self python files
+from models import UserRequest, UserResponse, Family  # custom modules, our self python files
 
 
 app = FastAPI()
@@ -27,6 +28,16 @@ def get_user_by_id(user_id: int = Path(..., gt=0, description="user id in DataBa
     return {'key': user_id, 'user_type': user_type, 'address': address}
 
 
-@app.post("/user")
-def create_user(user: User, family: Family, email: str = Body(...)):
-    return {"user": user, "family": family, "E-mail": email}
+@app.get("/user/check/{username}")
+def check_username(username):
+    if username not in ["alex", "ivan", "al123"]:
+        return username
+
+
+@app.post("/user", response_model=UserResponse, response_model_exclude={"address", "birthdate"})
+def create_user(user: UserRequest, family: Family, email: str = Body(...)):
+    if user.work_experience[0].number_of_years > user.age:
+        return JSONResponse(status_code=400, content={"error": "number_of_years can't more than age"})
+
+    return UserResponse(**user.dict(), id=100, family=family, email=email)
+
