@@ -5,7 +5,15 @@
 - Query ```validation params of query```
 - Body ```validation params of request body```
 - Field ```validation field of request body```
-- @validator ```validation field of request body (additional checkers)```
+- @validator ```validation field of request/response body (additional checkers)```
+
+- APIRouter 
+```
+  create group of endpoints, indicate prefix and tags
+  add to main app for work
+  - from fastapi import APIRouter
+  - app.include_router(router_product)
+```
 
 #### response
 - response_model  ```parameter in endpoint, for check response```
@@ -13,6 +21,12 @@
 - response_model_include ```include fields in response```
 - from fastapi.responses import HTMLResponse, JSONResponse, FileResponse, RedirectResponse
 
+
+#### product
+- crud.py - functions for endpoints products group
+- views.py - bind endpoints and functions products group
+- schemas.py - all models of products group
+- helper.py - additional functions and classes for products group
 
 ### other Python modules
 - Typing [List, Dict, Set etc.]```validation additional data types```
