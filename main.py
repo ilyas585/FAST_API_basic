@@ -44,3 +44,4 @@ def create_user(user: UserRequest, family: Family, email: str = Body(...)):
     return UserResponse(**user.dict(), id=100, family=family, email=email)
 
 
+# added
