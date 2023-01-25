@@ -10,13 +10,13 @@ router_product = APIRouter(prefix="/product", tags=["Product"])
 
 
 @router_product.post("", response_model=ProductOut)
-def create_product(product_in: ProductIn) -> ProductOut:
-    return crud.create_product(product_in)
+def create_product(product_in: ProductIn, token: str) -> ProductOut:
+    return crud.create_product(product_in, token)
 
 
 @router_product.get("/{product_id}", response_model=ProductOut)
-def get_product_by_id(product_id: int) -> ProductOut:
-    return crud.get_product_by_id(product_id)
+def get_product_by_id(product_id: int, token: str) -> ProductOut:
+    return crud.get_product_by_id(product_id, token)
 
 
 @router_product.get("s", response_model=List[ProductOut])
@@ -25,7 +25,7 @@ def get_products() -> List[ProductOut]:
 
 
 @router_product.delete("/{product_id}")
-def get_product_by_id(product_id: int) -> None:
+def delete_product(product_id: int) -> None:
     return crud.delete_product(product_id)
 
 

@@ -21,12 +21,11 @@ def get_user_by_id(user_id: int, token: str) -> UserOut:
 
 @router_user.get("s", response_model=List[UserOut])
 def get_users(token: str) -> List[UserOut]:
-    crud.check_token(token)
-    return crud.get_users()
+    return crud.get_users(token)
 
 
 @router_user.delete("/{user_id}")
-def get_user_by_id(user_id: int, token: str) -> None:
+def delete_user(user_id: int, token: str) -> None:
     crud.check_token(token)
     return crud.delete_user(user_id)
 
