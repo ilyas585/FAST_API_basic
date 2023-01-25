@@ -4,6 +4,7 @@ Read
 Update
 Delete
 """
+from fastapi import HTTPException
 
 from api.users.schemas import UserIn, UserOut, UserInPut
 from api.users.helper import Helper
@@ -13,10 +14,12 @@ helper = Helper()
 
 
 def check_token(token):
-    if token in helper.cache_by_token:
-        pass
-    else:
-        raise ValueError(f"incorrect {token}")
+    if not isinstance(token, str):
+        return {"message": "incorrect token", "details": "type is not string"}
+    if not len(token.split('-')) == 5:
+        return {"message": "incorrect token", "details": "token not with 5 blocks"}
+    if token not in helper.cache_by_token:
+        return {"message": "Authorization error", "details": "token not in cashe"}
 
 
 def create_user(user_in: UserIn) -> UserOut:
@@ -27,9 +30,15 @@ def create_user(user_in: UserIn) -> UserOut:
     return user
 
 
-def get_user_by_id(user_id: int) ->UserOut:
-    user = helper.db[user_id]
-    return user
+def get_user_by_id(user_id: int, token: str) -> UserOut:
+    errors = check_token(token)
+    if errors is None:
+        if user_id in helper.db:
+            return helper.db[user_id]
+        else:
+            raise HTTPException(status_code=404, detail={"message": "User not found!"})
+    else:
+        raise HTTPException(status_code=400, detail=errors)
 
 
 def get_users() -> list[UserOut]:

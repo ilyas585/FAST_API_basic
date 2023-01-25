@@ -20,7 +20,7 @@
 - response_model_exclude ```exclude fields in response```
 - response_model_include ```include fields in response```
 - from fastapi.responses import HTMLResponse, JSONResponse, FileResponse, RedirectResponse
-
+- from fastapi import HTTPException ```raise exception for response (usually errors)```
 
 #### product
 - crud.py - functions for endpoints products group

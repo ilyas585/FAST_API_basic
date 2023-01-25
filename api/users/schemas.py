@@ -39,6 +39,7 @@ class UserIn(UserBase):
 class UserInPut(UserBase):
     user_name: str = None
     age: int = None
+    address: str = None
 
 
 def generate_token():
