@@ -44,6 +44,13 @@ user_table = Table(
     Column("accessed_catalog", JSON)
 )
 
+token_table = Table(
+    "token",
+    metadata,
+    Column("token", String, primary_key=True, unique=True),
+    Column("user_id", Integer)
+)
+
 product_table = Table(
     'products',
     metadata,

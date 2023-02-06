@@ -4,60 +4,61 @@ Read
 Update
 Delete
 """
+from typing import Type
 from fastapi import HTTPException
 
-from api.users.schemas import UserIn, UserOut, UserInPut
-from db.session import db_session
+from api.users.schemas import UserIn, UserOut, CreateUser
+from db import db_user, db_token
 
 
-def check_token(token):
-    if not isinstance(token, str):
-        return {"message": "incorrect token", "details": "type is not string"}
-    if not len(token.split('-')) == 5:
-        return {"message": "incorrect token", "details": "token not with 5 blocks"}
-    if token not in db_session.cache_by_token:
-        return {"message": "Authorization error", "details": "token not in cashe"}
+class User:
+    def __init__(self, db_session):
+        self.db_session = db_session
 
+    def check_token(self, token):
+        if not isinstance(token, str):
+            return {"message": "incorrect token", "details": "type is not string"}
+        if not len(token.split('-')) == 5:
+            return {"message": "incorrect token", "details": "token not with 5 blocks"}
+        user = db_token.get_user_by_token(self.db_session, token)
+        if user is None:
+            return {"message": "Authorization error", "details": "token not in cache"}
 
-def create_user(user_in: UserIn) -> UserOut:
-    user = UserOut(**user_in.dict(), id=db_session.next_user_id)
-    db_session.db_user[user.id] = user
-    db_session.cache_by_token[user.token] = user
+    def create_user(self, user_in: UserIn) -> CreateUser:
+        user = db_user.create_user(self.db_session, **user_in.dict())
+        user_out = CreateUser(id=user.id, username=user.username, age=user.age, address=user.address,
+                              accessed_catalog=user.accessed_catalog)
+        db_token.add_token(self.db_session, user_out.id, user_out.token)
+        return user_out
 
-    return user
+    def get_user_by_id(self, user_id: int, token: str):
+        errors = self.check_token(token)
+        if errors is None:
+            user = db_user.get_user_by_id(self.db_session, user_id)
+            if user:  # ==  if user is not None
+                return UserOut(id=user.id, username=user.username, age=user.age, address=user.address,
+                               accessed_catalog=user.accessed_catalog)
+            else:
+                raise HTTPException(status_code=404, detail={"message": "User not found!"})
+        else:
+            raise HTTPException(status_code=400, detail=errors)
 
+    def get_users(self) -> [UserOut]:
+        results = db_user.get_all_users(self.db_session)
+        user_outs = []
+        for u in results:
+            uo = UserOut(id=u.id, age=u.age, username=u.username, address=u.address, accessed_catalog=u.accessed_catalog)
+            user_outs.append(uo)
+        return user_outs
 
-def get_user_by_id(user_id: int, token: str) -> UserOut:
-    errors = check_token(token)
-    if errors is None:
-        if user_id in db_session.db_user:
-            return db_session.db_user[user_id]
+    def put_user(self, user_id: int, user_in: UserIn) -> UserOut:
+        user = db_user.update_user(self.db_session, user_id, user_in)
+        if user:
+            return UserOut(id=user.id, username=user.username, age=user.age, address=user.address,
+                           accessed_catalog=user.accessed_catalog)
         else:
             raise HTTPException(status_code=404, detail={"message": "User not found!"})
-    else:
-        raise HTTPException(status_code=400, detail=errors)
 
-
-def get_users(token: str) -> list[UserOut]:
-    errors = check_token(token)
-    if errors is None:
-        return list(db_session.db_user.values())
-    else:
-        raise HTTPException(status_code=400, detail=errors)
-
-
-def put_user(user_id: int, user_in: UserInPut) -> UserOut:
-    user = db_session.db_user[user_id].dict()
-    for i, j in user_in.dict().items():
-        if i in user and j is not None:
-            user[i] = j
-
-    user_out = UserOut(**user)
-    db_session.db_user[user_id] = user_out
-
-    return user_out
-
-
-def delete_user(user_id: int) -> None:
-    if user_id in db_session.db_user:
-        del db_session.db_user[user_id]
+    def delete_user(self, user_id: int) -> None:
+        if not db_user.delete_user(self.db_session, user_id):
+            raise HTTPException(status_code=404, detail={"message": "User not found!"})

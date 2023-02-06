@@ -25,9 +25,9 @@ class Catalog(BaseModel):
 
 
 class UserBase(BaseModel):
-    user_name: str
-    age: int
-    address: str
+    username: str = None
+    age: int = None
+    address: str = None
     accessed_catalog: Catalog = None
 
 
@@ -35,16 +35,14 @@ class UserIn(UserBase):
     pass
 
 
-class UserInPut(UserBase):
-    user_name: str = None
-    age: int = None
-    address: str = None
+class UserOut(UserBase):
+    id: int
 
 
 def generate_token():
     return str(uuid4())
 
 
-class UserOut(UserBase):
+class CreateUser(UserBase):
     id: int
     token: str = Field(default_factory=generate_token)

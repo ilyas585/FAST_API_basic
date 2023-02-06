@@ -5,17 +5,18 @@ def add_2(*args):
     print("-"*100)
 
 
-def add_3(a=0, b=0, c=0):
+def add_3(a: int = 0, b: int = 0, c: int = 0) -> None:
     print(a + 1)
     print(b + 2)
     print(c + 3)
 
 
-def add_4(n, p, **kwargs):
+def add_4(n, p, **kwargs) -> str:
     print(n + 4)
     print(p + 4)
     for i, j in kwargs.items():
         print(i, j + 4)
+    return "Finish"
 
 
 add_2(1, 2, 3)  #  positional arguments
