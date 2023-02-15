@@ -1,0 +1,6 @@
+# folder for virtual environment
+venv/
+
+# databases with extension sqlite3
+*.sqlite3
+

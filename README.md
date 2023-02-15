@@ -44,3 +44,21 @@ run server with reload
 
 for install uvicorn pip install uvicorn
 ```
+
+#### venv - virtual environment
+- base python3.8(or python3.9) without libraries
+- pip install flask/ pydantic/ uvicorn etc... all requrements
+
+#### gitignore
+- specifying files and folders that cannot be added to github
+    - venv
+    - sqlite3
+
+#### requrements.txt
+- specifying requirement libraries
+- for collect requirements ```pip freeze > requirements.txt```
+    - fastapi
+    - sqlalchemy
+    - uvicorn
+    - pydantic
+    

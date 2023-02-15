@@ -9,3 +9,4 @@ app.include_router(router_product)
 app.include_router(router_user)
 
 # uvicorn.run(app)
+
