@@ -62,4 +62,12 @@ product_table = Table(
     Column("dimensions", JSON)
 )
 
+employee_table = Table(
+    'employees',
+    metadata,
+    Column("id", Integer, primary_key=True, unique=True, autoincrement=True),
+    Column("name", String),
+    Column("role", String)
+)
+
 metadata.create_all(bind=engine)

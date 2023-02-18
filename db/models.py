@@ -38,3 +38,12 @@ class Product(Base):
     def __repr__(self):
         return f"{self.id} {self.price} {self.dimensions}"
 
+
+class Employee(Base):
+    __tablename__ = "employees"
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
+    name = Column(String(32), default=None)
+    role = Column(String, default=None)
+
+    def __repr__(self):
+        return f"{self.id} {self.name} {self.role}"
