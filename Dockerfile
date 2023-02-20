@@ -1,5 +1,6 @@
 # get OS linux-alpine, install python3.9 and install pip
-FROM python:3.9-alpine
+# FROM python:3.9-alpine
+FROM python:3.9-buster
 
 # create folder app, and move it
 WORKDIR /app
