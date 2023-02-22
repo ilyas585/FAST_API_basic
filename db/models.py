@@ -32,7 +32,6 @@ class Product(Base):
     id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     name = Column(String(32), default=None)
     price = Column(Integer, default=None)
-    # tags = Column(ARRAY(String), default=None)
     dimensions = Column(JSON, default=None)
 
     def __repr__(self):
