@@ -43,3 +43,11 @@ print("="*100)
 t = (15, 13, 12)
 add_3(*t)  # 10, 11, 12
 
+
+# import os
+# import shutil
+#
+#
+# os.mkdir("new_folder")  # make directory - create empty folder
+# shutil.move(A, B)  # move element from folder A to folder B
+# shutil.copy(A, B)  # copy element from folder A to folder B
