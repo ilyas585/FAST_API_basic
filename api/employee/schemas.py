@@ -1,12 +1,11 @@
-from uuid import uuid4
 from enum import Enum
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel
 
 
 class RoleEnum(str, Enum):
     admin = "admin"
-    seller = "phones"
+    seller = "seller"
     expert = "expert"
 
 

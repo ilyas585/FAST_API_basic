@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "username": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "age": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "integer",
+          "minimum": 0
+        }
+      ]
+    },
+    "address": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "accessed_catalog": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "catalog": {
+              "type": "string",
+              "enum": [
+                "food",
+                "phones",
+                "furniture",
+                "vehicle",
+                "international_food"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "catalog"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "id"
+  ]
+}
