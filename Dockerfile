@@ -19,5 +19,8 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # execute command for run uvicorn
-CMD uvicorn main:app --host 0.0.0.0 --port 80
-#CMD python -m uvicorn main:app --host 0.0.0.0 --port 80
+CMD uvicorn main:app --host 0.0.0.0 --port 8000
+
+
+# docker build . -t python-6-fastapi-basic
+# docker run -p 80:8000 -d python-6-fastapi-basic

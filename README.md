@@ -75,9 +75,9 @@ for install uvicorn pip install uvicorn
   - ```docker stop 14c5d9385025``` and ```docker rm 14c5d9385025``` stop and remove docker-container
   - ```docker rmi b908778bd1b0``` - remove docker-image by id
   - ```docker build . -t python-6-fastapi-basic``` - create image by Dockerfile
-  - ```docker run -p 80:80 python-6-fastapi-basic``` - run my application FAST API
-  - ```docker run -p 80:80 -it python-6-fastapi-basic``` - run container, enter terminal in container
-  - ```docker run -p 80:80 -d python-6-fastapi-basic``` - run container in daemon
+  - ```docker run -p 80:8000 python-6-fastapi-basic``` - run my application FAST API
+  - ```docker run -p 80:8000 -it python-6-fastapi-basic``` - run container, enter terminal in container
+  - ```docker run -p 80:8000 -d python-6-fastapi-basic``` - run container in daemon
   - ```docker exec -it 14c5d9385025 /bin/bash``` - enter ti container in terminal
   - ```docker logs -f 14c5d9385025``` - see logs in container
   

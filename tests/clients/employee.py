@@ -41,8 +41,16 @@ class EmployeeClient:
         self.print_result(response)
         return response
 
-    def update_employee(self):
-        pass
+    def update_employee(self, employee_id: int, name: str = None, role: str = None):
+        endpoint = f"{self.url}/employee/{employee_id}"
+        req_dict = {
+            "name": name,
+            "role": role
+        }
+
+        response = requests.put(endpoint, json=req_dict)
+        self.print_result(response)
+        return response
 
     def delete_employee(self):
         pass
