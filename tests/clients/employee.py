@@ -52,5 +52,8 @@ class EmployeeClient:
         self.print_result(response)
         return response
 
-    def delete_employee(self):
-        pass
+    def delete_employee(self, employee_id: int):
+        endpoint = f"{self.url}/employee/{employee_id}"
+        response = requests.delete(endpoint)
+        self.print_result(response)
+        return response

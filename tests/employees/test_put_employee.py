@@ -1,15 +1,14 @@
 import random
 import pytest
 
+
 @pytest.mark.parametrize("new_name, new_role", [
     ("new name Employee", None),
     (None, "admin"),
     ("new name Employee", "admin")
 ])
 def test_positive(application, new_name, new_role):
-    resp = application.api_client.employee.get_employees()
-    employee_ids = [employee["id"] for employee in resp.json()]
-    employee_id = random.choice(employee_ids)
+    employee_id = application.employee_id
 
     response = application.api_client.employee.update_employee(employee_id, new_name, new_role)
 
