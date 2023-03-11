@@ -51,3 +51,8 @@ add_3(*t)  # 10, 11, 12
 # os.mkdir("new_folder")  # make directory - create empty folder
 # shutil.move(A, B)  # move element from folder A to folder B
 # shutil.copy(A, B)  # copy element from folder A to folder B
+
+
+# Andemir Milana
+# Alina, "Biyaslan
+# Andy, Eldar
