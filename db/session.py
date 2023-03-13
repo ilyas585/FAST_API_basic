@@ -16,3 +16,4 @@ def db_session():
         yield db  # return db, when finish job with db go ro finally
     finally:
         db.close()  # close session with db
+
