@@ -4,7 +4,7 @@ import string
 from tests.configuration import ACCESSED_CATALOG_ENUM
 
 
-def test_positive(application):
+def test_positive(user_fixture):
     # precondition - предусловие. Создание данных
     username = "test_" + "".join(random.sample(string.ascii_letters, 5))
     age = random.randint(0, 120)
@@ -15,6 +15,6 @@ def test_positive(application):
     }
 
     # request execution
-    response = application.api_client.user.create_user(username, age, address, accessed_catalog)
+    response = user_fixture.api_client.user_fixture.create_user(username, age, address, accessed_catalog)
 
     assert response.status_code == 200, "Статус код не соответствует ожидаемому"

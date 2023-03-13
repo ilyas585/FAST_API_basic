@@ -7,7 +7,7 @@ import pytest
     ("Ivan", [1, 2, 3], 422),
     ("Ivan", 123, 422)
 ])
-def test_negative(application, name, role, exp_code):
-    response = application.api_client.employee.create_employee(name, role)
+def test_negative(employee_fixture, name, role, exp_code):
+    response = employee_fixture.api_client.employee.create_employee(name, role)
 
     assert response.status_code == exp_code, "Статус код не соответствует ожидаемому"
