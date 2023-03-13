@@ -15,6 +15,6 @@ def test_positive(user_fixture):
     }
 
     # request execution
-    response = user_fixture.api_client.user_fixture.create_user(username, age, address, accessed_catalog)
+    response = user_fixture.api_client.user.create_user(username, age, address, accessed_catalog)
 
     assert response.status_code == 200, "Статус код не соответствует ожидаемому"
