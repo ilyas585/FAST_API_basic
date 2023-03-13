@@ -1,6 +1,7 @@
 # folder for virtual environment
 venv/
 .pytest_cache
+.idea
 */.pytest_cache
 
 # databases with extension sqlite3
