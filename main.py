@@ -15,5 +15,6 @@ app.include_router(router_employee)
 def root():
     return {"message": "Hello FAST_API"}
 
-# uvicorn.run(app)
+
+# uvicorn.run(app, host="0.0.0.0", port=80)
 

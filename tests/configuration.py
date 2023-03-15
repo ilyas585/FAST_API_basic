@@ -1,6 +1,7 @@
 import os
 
-url = "http://192.168.99.100"
+mode = "docker"
+url = "http://192.168.99.100" if mode == "docker" else "http://127.0.0.1"
 token = ""
 base_path = f"{os.path.dirname(os.path.abspath(__file__))}/"
 

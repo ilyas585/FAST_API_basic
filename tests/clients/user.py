@@ -43,8 +43,8 @@ class UserClient:
         self.print_result(response)
         return response
 
-    # не моя часть, но сделала т.к я не смогу проверить без этого тест (update_user)
-    def update_user(self, user_id: int, username: str = None, age: int = None, address: str = None, accessed_catalog: str = None):
+    def update_user(self, user_id: int, username: str = None, age: int = None, address: str = None,
+                    accessed_catalog: dict = None):
         endpoint = f"{self.url}/user/{user_id}"
         req_dict = {
             "username": username,

@@ -30,7 +30,7 @@ def update_user(db_session, user_id, new_user):
         old_user.username = new_user.username if new_user.username is not None else old_user.username
         old_user.age = new_user.age if new_user.age is not None else old_user.age
         old_user.address = new_user.address if new_user.address is not None else old_user.address
-        old_user.accessed_catalog = new_user.accessed_catalog if new_user.accessed_catalog is not None else old_user.accessed_catalog
+        old_user.accessed_catalog = new_user.accessed_catalog.dict() if new_user.accessed_catalog is not None else old_user.accessed_catalog
         db_session.commit()
         db_session.refresh(old_user)
         return old_user

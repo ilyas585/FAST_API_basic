@@ -23,4 +23,9 @@ CMD uvicorn main:app --host 0.0.0.0 --port 8000
 
 
 # docker build . -t python-6-fastapi-basic
-# docker run -p 80:8000 -d python-6-fastapi-basic
+# docker run -p 80:8000 --v /basic_db: /basic_db  -d python-6-fastapi-basic
+#
+#docker run -d --mount type=bind,source="$(pwd)"/datavolume, target=/app python-6-fastapi-basic
+#
+#docker run --mount src=/,target=/datavolume,type=bind -p 80:8000 -d python-6-fastapi-basic
+#docker run -p 80:8000 -v /app: "$(pwd)"/datavolume -d python-6-fastapi-basic
