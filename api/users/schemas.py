@@ -26,7 +26,7 @@ class Catalog(BaseModel):
 
 class UserBase(BaseModel):
     username: str = None
-    age: int = None
+    age: int = Field(None, gt=0)
     address: str = None
     accessed_catalog: Catalog = None
 

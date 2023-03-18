@@ -7,6 +7,7 @@ import pytest
     ("Biy", 16, ["Nalchik"], {"name": "besmok", "catalog": "food"}, 422),
     ("Biy", 16, "Nalchik", {"name": "besmok", "catalog": "tops"}, 422),
     ("Biy", 16, "Nalchik", ["name", "besmok", "catalog", "phones"], 422),
+    ("Ivan", -1, "Nalchik", {"name": "besmok", "catalog": "international_food"}, 422)
 ])
 def test_negative(user_fixture, username, age, address, accessed_catalog, exp_code):
     response = user_fixture.api_client.user.create_user(username, age, address, accessed_catalog)
