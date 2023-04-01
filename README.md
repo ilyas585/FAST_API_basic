@@ -88,4 +88,12 @@ for install uvicorn pip install uvicorn
   - CMD
   - FROM
 
+- command for docker volume:
+- docker volume ls
+- docker volume create my-volume
+- docker volume rm bc18515ac121b5d98aa
+- docker volume inspect volume-python6
+- docker run --rm --volumes-from fastapi-application -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /volume-python6
+- 
+- 
 

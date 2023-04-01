@@ -28,8 +28,9 @@ from sqlalchemy import (
     FLOAT,
     JSON
 )
+from config import DB_URL
 
-DB_URL = "sqlite:///basic_db.sqlite3"
+
 engine = create_engine(url=DB_URL, echo=True)  # engine for connect application with DataBase
 metadata = MetaData()
 
