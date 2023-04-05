@@ -80,7 +80,7 @@ for install uvicorn pip install uvicorn
   - ```docker run -p 80:8000 -d python-6-fastapi-basic``` - run container in daemon
   - ```docker exec -it 14c5d9385025 /bin/bash``` - enter ti container in terminal
   - ```docker logs -f 14c5d9385025``` - see logs in container
-  
+  - ```docker export d0ed6383853b > latest.tar``` export all files from container to .tar file
 
 - command for dockerfile:
   - pip install -r requirements.txt
@@ -90,8 +90,8 @@ for install uvicorn pip install uvicorn
 
 - command for docker volume:
 - docker volume ls
-- docker volume create my-volume
-- docker volume rm bc18515ac121b5d98aa
+- docker volume create volume-python6
+- docker volume rm volume-python6
 - docker volume inspect volume-python6
 - docker run --rm --volumes-from fastapi-application -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /volume-python6
 - 
