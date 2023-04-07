@@ -10,6 +10,7 @@ table users
 id   username   address
 1     alex       Moscow
 2     Oleg       Nalchik
+3     Ivan       Ankara
 
 table products
 id    name    price
