@@ -1,6 +1,6 @@
 from typing import Optional, Type
 
-from db.models import User, Token
+from app.db.models import User, Token
 
 
 def get_user_by_token(db_session, token: str) -> Optional[Type[User]]:

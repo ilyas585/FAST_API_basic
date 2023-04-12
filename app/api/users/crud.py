@@ -4,11 +4,10 @@ Read
 Update
 Delete
 """
-from typing import Type
 from fastapi import HTTPException
 
-from api.users.schemas import UserIn, UserOut, CreateUser
-from db import db_user, db_token
+from app.api.users.schemas import UserIn, UserOut, CreateUser
+from app.db import db_user, db_token
 
 
 class User:

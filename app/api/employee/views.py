@@ -3,9 +3,9 @@ from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from api.employee import crud
-from api.employee.schemas import EmployeeIn, EmployeeOut
-from db.session import db_session
+from app.api.employee import crud
+from app.api.employee.schemas import EmployeeIn, EmployeeOut
+from app.db.session import db_session
 
 router_employee = APIRouter(prefix="/employee", tags=["employee"])
 

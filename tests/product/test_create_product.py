@@ -8,7 +8,6 @@ import pytest
      "width": random.uniform(1, 100000),
      "height": random.uniform(1, 100000)
      },
-    None
 ])
 def test_positive(product_fixture, dimension):
     # precondition - предусловие. Создание данных

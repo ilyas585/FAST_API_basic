@@ -1,5 +1,6 @@
 import random
 import string
+import allure
 
 from tests.configuration import ACCESSED_CATALOG_ENUM
 

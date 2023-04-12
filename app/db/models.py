@@ -46,3 +46,14 @@ class Employee(Base):
 
     def __repr__(self):
         return f"{self.id} {self.name} {self.role}"
+
+
+class Manufacturer(Base):
+    __tablename__ = "manufacturers"
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
+    name = Column(String(32), default=None)
+    address = Column(String, default=None)
+    coefficient_sale = Column(Integer, default=None)
+
+    def __repr__(self):
+        return f"{self.id} {self.name} {self.address} {self.coefficient_sale}"

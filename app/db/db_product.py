@@ -1,8 +1,8 @@
 from typing import Optional
 from sqlalchemy.orm import Session
 
-from db.models import Product
-from api.product.schemas import Dimension
+from app.db.models import Product
+from app.api.product.schemas import Dimension
 
 
 def get_product_by_id(db_session: Session, product_id: int) -> Optional[Product]:  # Product | None

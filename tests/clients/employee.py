@@ -11,6 +11,7 @@ class EmployeeClient:
     @staticmethod
     def print_result(response: requests.Response):
         print("REQUEST INFO")
+        print("METHOD", response.request.method)
         print("URL", response.request.url)
         print("BODY", response.request.body)
 

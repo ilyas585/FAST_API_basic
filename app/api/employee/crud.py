@@ -7,8 +7,8 @@ Delete
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
-from api.employee.schemas import EmployeeIn, EmployeeOut
-from db import db_employee
+from app.api.employee.schemas import EmployeeIn, EmployeeOut
+from app.db import db_employee
 
 
 class Employee:

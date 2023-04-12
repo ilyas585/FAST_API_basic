@@ -1,6 +1,6 @@
 from typing import Optional
 
-from db.models import Employee
+from app.db.models import Employee
 
 
 def get_employee_by_id(db_session, employee_id) -> Optional[Employee]:

@@ -97,3 +97,11 @@ for install uvicorn pip install uvicorn
 - 
 - 
 
+# allure
+- run tests and save result to allure folder `py.test -v ./tests --alluredir=./allure-results`
+- generate repost `allure generate ./allure-results --output ./allure-reports`
+- open report `allure serve`
+-
+
+
+

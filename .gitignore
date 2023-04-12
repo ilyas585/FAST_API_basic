@@ -1,5 +1,7 @@
 # folder for virtual environment
 venv/
+allure-reports/
+allure-results/
 .pytest_cache
 .idea
 */.pytest_cache

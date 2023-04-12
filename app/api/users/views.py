@@ -3,9 +3,9 @@ from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from api.users import crud
-from api.users.schemas import UserIn, UserOut, CreateUser
-from db.session import db_session
+from app.api.users import crud
+from app.api.users.schemas import UserIn, UserOut, CreateUser
+from app.db.session import db_session
 
 
 router_user = APIRouter(prefix="/user", tags=["User"])

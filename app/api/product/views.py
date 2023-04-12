@@ -3,9 +3,9 @@ from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from api.product import crud
-from api.product.schemas import ProductIn, ProductOut, ProductInPut
-from db.session import db_session
+from app.api.product import crud
+from app.api.product.schemas import ProductIn, ProductOut, ProductInPut
+from app.db.session import db_session
 
 router_product = APIRouter(prefix="/product", tags=["Product"])
 
