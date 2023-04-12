@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "address": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "coefficient_sale": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "number"
+        }
+      ]
+    }
+  },
+  "required": [
+    "id"
+  ]
+}
+
